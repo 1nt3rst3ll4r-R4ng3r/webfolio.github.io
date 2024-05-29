@@ -1,0 +1,321 @@
+/**********************************/
+/********** General CSS ***********/
+/**********************************/
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column; /* Ensures children elements stack vertically */
+    align-items: center; /* Centers children horizontally */
+    background: linear-gradient(135deg, #ffcc00, #ff5722, #03a9f4, #e91e63);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    color: #eee;
+    margin: 0 5px;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.h1, h1 {
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 3rem;
+    font-size: larger;
+    margin-left: 2px;
+}
+
+header {
+    text-align: center;
+    padding: 20px 0;
+}
+
+a {
+    color: #222222;
+    transition: all .3s;
+}
+
+a:hover,
+a:active,
+a:focus {
+    color: #FF6F61;
+    outline: none;
+    text-decoration: none;
+}
+
+.btn:focus {
+    box-shadow: none;
+}
+
+
+/**********************************/
+/****** Layout with Sidebar *******/
+/**********************************/
+.wrapper {
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1140px;
+}
+
+.wrapper .sidebar {
+    position: relative;
+    width: 100%;
+    float: left;
+    background: #222222;
+}
+
+.wrapper .content {
+    position: relative;
+    width: 100%;
+    padding: 15px;
+    float: left;
+    background: #3f3d35;
+
+}
+
+.wrapper .sidebar-header,
+.wrapper .sidebar-footer {
+    display: none;
+}
+
+.navbar {
+    padding: 15px;
+    background: #222222 !important;
+}
+
+.navbar-expand-md .navbar-nav .nav-item {
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, .2);
+}
+
+.navbar-expand-md .navbar-nav .nav-item:first-child{
+    border-top: none;
+}
+
+.navbar-expand-md .navbar-nav .nav-link {
+    color: #ffffff;
+    padding: 5px 15px 7px 15px;
+    transition: all .3s;
+}
+
+.navbar-expand-md .navbar-nav .nav-link i {
+    color: #FF6F61;
+    float: right;
+    padding-top: 5px;
+    transition: all .3s;
+}
+
+.navbar-expand-md .navbar-nav .nav-link:hover,
+.navbar-expand-md .navbar-nav .nav-link.active {
+    color: #FF6F61;
+}
+
+.navbar-expand-md .navbar-nav .nav-link:hover i,
+.navbar-expand-md .navbar-nav .nav-link.active i{
+    color: #ffffff;
+}
+
+
+.wrapper .sidebar,
+.wrapper .content {
+    -webkit-transition: margin 200ms ease-out;
+    -moz-transition: margin 200ms ease-out;
+    -o-transition: margin 200ms ease-out;
+    transition: margin 200ms ease-out;
+}
+
+@media (min-width: 768px) {
+    .wrapper .content {
+        padding: 30px 0px 30px 30px;
+    }
+    
+    
+    
+    .wrapper .content::before {
+        top: 0;
+    }
+    
+    .wrapper .content::after {
+        bottom: 0;
+    }
+    
+    .wrapper .sidebar {
+        position: fixed;
+        width: 300px;
+        height: 100%;
+        margin-left: -250px;
+        float: left;
+        overflow: auto;
+        scrollbar-width: thin;
+        scrollbar-color: gray;
+        z-index: 2;
+    }
+
+    .wrapper .sidebar:hover {
+        margin-left: 0px;
+    }
+    
+    .wrapper .content {
+        position: relative;
+        width: calc(100% - 50px);
+        margin-left: 50px;
+        float: right;
+        height: 100%;
+    }
+    
+    .wrapper .sidebar:hover  .sidebar-header {
+        position: relative;
+        display: block;
+        width: 100%;
+    }
+
+    .wrapper .sidebar .sidebar-header img {
+        width: 100%;
+        height: auto;
+    }
+    
+    .navbar-brand {
+        display: none;
+    }
+    
+    .navbar {
+        padding: 15px 0;
+        flex-direction: column;
+    }
+    
+    .wrapper .sidebar:hover .navbar-expand-md .navbar-nav .nav-link {
+        padding: 5px 30px 7px 30px;
+    }
+    
+    .wrapper .sidebar::-webkit-scrollbar {
+        width: 7px;
+    }
+
+    .wrapper .sidebar::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+    }
+
+    .wrapper .sidebar::-webkit-scrollbar-thumb {
+        background-color: darkgrey;
+        outline: 1px solid slategrey;
+        border-radius: 7px
+    }
+    
+    .navbar-brand {
+        display: none;
+    }
+    
+    .sidebar .sidebar-footer {
+        width: 300px;
+        position: fixed;
+        bottom: 0;
+        padding: 15px;
+        font-size: 0;
+        text-align: center;
+        background: #222222;
+    }
+    
+    .sidebar .sidebar-footer a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        padding: 5px 0;
+        margin: 0 15px 15px 0;
+        text-align: center;
+        font-size: 18px;
+        color: #222222;
+        background: #FF6F61;
+    }
+    
+    .sidebar .sidebar-footer a:last-child {
+        margin-right: 0;
+    }
+    
+    .sidebar .sidebar-footer a:hover {
+        color: #FF6F61;
+        background: #ffffff;
+    }
+    
+    .sidebar:hover .sidebar-footer {
+        display: block;
+    }
+}
+
+@media (min-width: 992px) {
+    .wrapper .sidebar {
+        margin: 0;
+    }
+
+    .wrapper .content {
+        width: calc(100% - 300px);
+        margin-left: 300px;
+    }
+
+    .sidebar .sidebar-header {
+        position: relative;
+        display: block;
+        width: 100%;
+    }
+    
+    .navbar-expand-md .navbar-nav .nav-link {
+        padding: 5px 30px 7px 30px;
+    }
+    
+    .sidebar .sidebar-footer {
+        display: block;
+    }
+}
+
+@media (max-width: 1140px) {
+    .wrapper .content {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    .wrapper .content {
+        padding: 15px;
+    }
+}
+
+
+/**********************************/
+/*********** Footer CSS ***********/
+/**********************************/
+footer {
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+}
+
+.footer-slider {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.footer-image {
+    position: absolute;
+    width: 600px;
+    height: 100px;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+
+.footer-image.active {
+    opacity: 1;
+}
+
